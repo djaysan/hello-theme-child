@@ -101,9 +101,3 @@ function disable_comments_dashboard() {
     remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');
 }
 add_action('admin_init', 'disable_comments_dashboard');
-
-/** Shortcode: Languages menu */
-function shortcode_languages_menu() {
-	echo wp_nav_menu( array('menu' => 'Idiomas') );
-}
-add_shortcode('languages_menu', 'shortcode_languages_menu');
