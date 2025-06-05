@@ -1,6 +1,6 @@
 === Hello Elementor Child ===
 
-Contributors: elemntor
+Contributors: elementor, Ludovic Verbeeck
 Requires at least: 5.9
 Tested up to: 6.2
 Stable tag: 2.0.0
