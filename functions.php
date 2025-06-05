@@ -101,3 +101,42 @@ function disable_comments_dashboard() {
     remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal');
 }
 add_action('admin_init', 'disable_comments_dashboard');
+
+// Lazy Load
+add_filter( 'media_library_infinite_scrolling', '__return_true' );
+
+// Setting Default WordPress UI color 
+function set_default_admin_color($user_id) {
+    $args = array(
+        'ID' => $user_id,
+        'admin_color' => 'modern'
+    );
+    wp_update_user( $args );
+}
+add_action('user_register', 'set_default_admin_color');
+
+// Make default Rankmath share image apppear instead of first image on page when not set
+add_filter('rank_math/opengraph/pre_set_content_image', function() {
+	return true;
+});
+
+// Turn off admin email verification
+add_filter( 'admin_email_check_interval', '__return_false' );
+
+// Disable Back to WordPress Editor button
+add_action('admin_head', 'my_custom_style');
+// admin_head is a hook my_custom_fonts is a function we are adding it to the hook
+function my_custom_style() {
+  echo '<style>
+    #elementor-switch-mode .elementor-switch-mode-on{
+        display: none;    
+    }
+	body.elementor-editor-active #elementor-switch-mode-button{
+	visibility: hidden;
+	}
+	body.elementor-editor-active #elementor-switch-mode-button:hover{
+	visibility: hidden;
+	}
+      </style>';
+}
+
